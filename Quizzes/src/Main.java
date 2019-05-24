@@ -70,17 +70,17 @@ public class Main
 
         Array list = new Array(10, 0);
 
-        list.insert(4);
-        list.insert(3);
-        list.insert(2);
-        list.insert(7);
-        list.insert(8);
-        list.insert(2);
-        list.insert(3);
         list.insert(1);
+        list.insert(3);
+        list.insert(4);
+        list.insert(5);
+        list.insert(2);
+        //list.insert(2)
+        //list.insert(3);
+        //list.insert(1);
 
         //list.sort();
 
-        list.findDuplicates();
+        System.out.println(list.findLengthOfLCIS());
     }
 }
