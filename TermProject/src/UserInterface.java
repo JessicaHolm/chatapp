@@ -1,19 +1,52 @@
-import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
 public class UserInterface implements ActionListener
 {
-    JFrame frame = new JFrame("Chat Application");
-    protected static final String textFieldString = "JTextField";
-    protected static final String passwordFieldString = "JPasswordField";
-    protected static final String buttonString = "JButton";
+    IntroWindow intro = new IntroWindow();
+    Register reg = new Register();
+    Login log = new Login();
+    MainWindow main = new MainWindow();
+
+    static class IntroWindow
+    {
+        JFrame frame = new JFrame("Chat Application");
+    }
+
+    static class Register
+    {
+        JFrame frame = new JFrame("Register");
+        JTextField textField = new JTextField(10);
+        JPasswordField passwordField = new JPasswordField(10);
+    }
+
+    static class Login
+    {
+        JFrame frame = new JFrame("Login");
+        JTextField textField = new JTextField(10);
+        JPasswordField passwordField = new JPasswordField(10);
+    }
+
+    static class MainWindow
+    {
+        JFrame frame = new JFrame("Chat Application");
+
+    }
 
     public UserInterface()
     {
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        intro.frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        intro.frame.addWindowListener(new WindowAdapter()
+        {
+            public void windowClosing(WindowEvent e)
+            {
+                Server.writeToFile();
+                intro.frame.dispose();
+                System.exit(0);
+            }
+        });
 
-        JPanel panel = (JPanel) frame.getContentPane();
+        JPanel panel = (JPanel) intro.frame.getContentPane();
         JLabel title = new JLabel("Welcome to the Java Chat Application!", SwingConstants.CENTER);
         JButton reg = new JButton("Register New User");
         JButton login = new JButton("Login");
@@ -26,30 +59,50 @@ public class UserInterface implements ActionListener
         reg.addActionListener(this);
         login.addActionListener(this);
 
-        frame.add(reg);
-        frame.add(login);
+        intro.frame.add(reg);
+        intro.frame.add(login);
         panel.add(title);
 
-        frame.setSize(1000,1000);
-        frame.setLayout(null);
-        frame.setVisible(true);
+        intro.frame.setSize(1000,800);
+        intro.frame.setLayout(null);
+        intro.frame.setVisible(true);
+    }
+
+    public void mainChat()
+    {
+        main.frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        main.frame.addWindowListener(new WindowAdapter()
+        {
+            public void windowClosing(WindowEvent e)
+            {
+                Server.writeToFile();
+                main.frame.dispose();
+                System.exit(0);
+            }
+        });
+
+        JPanel panel = (JPanel) main.frame.getContentPane();
+
+        JLabel textFieldLabel = new JLabel("Logged in as: " + reg.textField.getText());
+        textFieldLabel.setBounds(25, 110, 300, 10);
+
+        panel.add(textFieldLabel);
+        main.frame.setSize(1000,800);
+        main.frame.setLayout(null);
+        main.frame.setVisible(true);
     }
 
     public void actionPerformed(ActionEvent e)
     {
         if("register".equals(e.getActionCommand()))
         {
-            JFrame frame = new JFrame("Register");
-            JPanel panel = (JPanel) frame.getContentPane();
+            JPanel panel = (JPanel) reg.frame.getContentPane();
 
-            JTextField textField = new JTextField(10);
-            textField.setBounds(100,100, 200,30);
-            //textField.setActionCommand(textFieldString);
+            reg.textField.setBounds(100,100, 200,30);
 
-            JPasswordField passwordField = new JPasswordField(10);
-            passwordField.setBounds(100,150, 200,30);
-            passwordField.setActionCommand(passwordFieldString);
-            passwordField.addActionListener(this);
+            reg.passwordField.setBounds(100,150, 200,30);
+            reg.passwordField.setActionCommand("registerPassword");
+            reg.passwordField.addActionListener(this);
 
             JLabel textFieldLabel = new JLabel("Username: ");
             textFieldLabel.setBounds(25, 110, 300, 10);
@@ -57,17 +110,57 @@ public class UserInterface implements ActionListener
             JLabel passwordFieldLabel = new JLabel("Password: ");
             passwordFieldLabel.setBounds(25, 160, 300, 10);
 
-            panel.add(textField);
+            panel.add(reg.textField);
             panel.add(textFieldLabel);
-            panel.add(passwordField);
+            panel.add(reg.passwordField);
             panel.add(passwordFieldLabel);
-            frame.setSize(500,500);
-            frame.setLayout(null);
-            frame.setVisible(true);
+            reg.frame.setSize(500,500);
+            reg.frame.setLayout(null);
+            reg.frame.setVisible(true);
         }
-        if(passwordFieldString.equals(e.getActionCommand()))
+        if("login".equals(e.getActionCommand()))
         {
+            JPanel panel = (JPanel) log.frame.getContentPane();
 
+            log.textField.setBounds(100,100, 200,30);
+
+            log.passwordField.setBounds(100,150, 200,30);
+            log.passwordField.setActionCommand("loginPassword");
+            log.passwordField.addActionListener(this);
+
+            JLabel textFieldLabel = new JLabel("Username: ");
+            textFieldLabel.setBounds(25, 110, 300, 10);
+
+            JLabel passwordFieldLabel = new JLabel("Password: ");
+            passwordFieldLabel.setBounds(25, 160, 300, 10);
+
+            panel.add(log.textField);
+            panel.add(textFieldLabel);
+            panel.add(log.passwordField);
+            panel.add(passwordFieldLabel);
+            log.frame.setSize(500,500);
+            log.frame.setLayout(null);
+            log.frame.setVisible(true);
+        }
+        if("registerPassword".equals(e.getActionCommand()))
+        {
+           Server.server.register(reg.textField.getText(), new String(reg.passwordField.getPassword()));
+           JOptionPane.showMessageDialog(reg.frame,"Your account has been created!","Register", JOptionPane.INFORMATION_MESSAGE);
+           reg.frame.dispose();
+        }
+        if("loginPassword".equals(e.getActionCommand()))
+        {
+            int rc;
+            rc = Server.server.login(log.textField.getText(), new String(log.passwordField.getPassword()));
+            if(rc == 0)
+            {
+                JOptionPane.showMessageDialog(log.frame, "Login Successful!", "Login", JOptionPane.INFORMATION_MESSAGE);
+                log.frame.dispose();
+                intro.frame.dispose();
+                mainChat();
+            }
+            else
+                JOptionPane.showMessageDialog(log.frame, "Login Failed. Please try again.", "Login", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 }
