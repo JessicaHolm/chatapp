@@ -1,4 +1,6 @@
+import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 import javax.swing.*;
 
 public class UserInterface implements ActionListener
@@ -6,7 +8,7 @@ public class UserInterface implements ActionListener
     IntroWindow intro = new IntroWindow();
     Register reg = new Register();
     Login log = new Login();
-    MainWindow main = new MainWindow();
+    static MainWindow main = new MainWindow();
 
     static class IntroWindow
     {
@@ -30,7 +32,9 @@ public class UserInterface implements ActionListener
     static class MainWindow
     {
         JFrame frame = new JFrame("Chat Application");
-
+        JTextField messageBox = new JTextField(40);
+        JTextArea chatBox = new JTextArea("test",5, 20);
+        JScrollPane scrollPane = new JScrollPane(chatBox);
     }
 
     public UserInterface()
@@ -83,13 +87,47 @@ public class UserInterface implements ActionListener
 
         JPanel panel = (JPanel) main.frame.getContentPane();
 
-        JLabel textFieldLabel = new JLabel("Logged in as: " + reg.textField.getText());
-        textFieldLabel.setBounds(25, 110, 300, 10);
+        main.messageBox.addActionListener(this);
+        main.messageBox.setActionCommand("send");
 
-        panel.add(textFieldLabel);
+        main.chatBox.setEditable(false);
+
+        DefaultListModel listModel = new DefaultListModel();
+
+        listModel = new DefaultListModel();
+        listModel.addElement("Jane Doe");
+        listModel.addElement("John Smith");
+        listModel.addElement("Kathy Green");
+
+        JList list = new JList(listModel);
+        list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        list.setSelectedIndex(0);
+        JScrollPane listScrollPane = new JScrollPane(list);
+
+        panel.add(main.messageBox, BorderLayout.PAGE_END);
+        panel.add(main.scrollPane, BorderLayout.CENTER);
+        panel.add(listScrollPane, BorderLayout.LINE_END);
+
         main.frame.setSize(1000,800);
-        main.frame.setLayout(null);
         main.frame.setVisible(true);
+    }
+
+    //public static boolean isOpen()
+    //{
+        //return main.frame.isVisible();
+    //}
+
+    public static void displayMessage(String line)
+    {
+        //System.out.println(main.chatBox.getText());
+        SwingUtilities.invokeLater(new Runnable()
+        {
+            public void run()
+            {
+                //System.out.println(main.chatBox.getText());
+                main.chatBox.setText(main.messageBox.getText() + '\n');
+            }
+        });
     }
 
     public void actionPerformed(ActionEvent e)
@@ -161,6 +199,22 @@ public class UserInterface implements ActionListener
             }
             else
                 JOptionPane.showMessageDialog(log.frame, "Login Failed. Please try again.", "Login", JOptionPane.INFORMATION_MESSAGE);
+        }
+        if("send".equals(e.getActionCommand()))
+        {
+            //try
+            //{
+                Client.sendMessage(main.messageBox.getText());
+                //main.chatBox.append(main.messageBox.getText() + '\n');
+                //main.messageBox.write(Client.out);
+                //System.out.println(Server.ServerThread.in.readLine());
+                //Server.ServerThread.receiveMessage();
+            //}
+            //catch (IOException i)
+            //{
+                //System.out.println("ui");
+                //i.printStackTrace();
+           // }
         }
     }
 }

@@ -1,14 +1,10 @@
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
-
+import javax.jws.soap.SOAPBinding;
 import java.net.*;
 import java.io.*;
 
 public class Server
 {
-    //initialize socket and input stream
-    private Socket socket = null;
     private ServerSocket serverSoc = null;
-    private DataInputStream in = null;
 
     public static Server server = new Server();
     public static Node head;
@@ -30,7 +26,7 @@ public class Server
         {
             FileReader file = new FileReader("UserInfo.txt");
             BufferedReader in = new BufferedReader(file);
-            String line = null;
+            String line;
 
             while ((line = in.readLine()) != null)
                 insert(line);
@@ -39,7 +35,7 @@ public class Server
 
         } catch (IOException i)
         {
-            System.out.println(i);
+            i.printStackTrace();
         }
     }
 
@@ -85,6 +81,112 @@ public class Server
 
     public void startServer(int port)
     {
+        try
+        {
+            serverSoc = new ServerSocket((port));
+            System.out.println("Server started");
+            System.out.println("Waiting for a client ...");
+
+            while (true)
+            {
+                try
+                {
+                    Socket socket = serverSoc.accept();
+                    System.out.println("Client accepted");
+                    ServerThread st = new ServerThread(socket);
+                    st.start();
+                } catch (IOException i)
+                {
+                    System.out.println("start");
+                    i.printStackTrace();
+                }
+            }
+        }
+        catch(IOException i)
+        {
+            i.printStackTrace();
+        }
+    }
+
+    static class ServerThread extends Thread
+    {
+        static Socket socket;
+        //static BufferedReader in = null;
+        static DataInputStream in  = null;
+
+        public ServerThread(Socket s)
+        {
+            socket = s;
+            //try
+            //{
+                //in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                //DataInputStream in = new DataInputStream(new BufferedInputStream(socket.getInputStream()));
+            //}
+            //catch (IOException i)
+            //{
+                //i.printStackTrace();
+            //}
+        }
+
+        public static void receiveMessage()
+        {
+            //try
+            //{
+                //DataInputStream in = new DataInputStream(new BufferedInputStream(socket.getInputStream()));
+
+                String line = "";
+
+                try
+                {
+                    line = in.readUTF();
+                    System.out.println(line);
+
+                }
+                catch (IOException i)
+                {
+                    i.printStackTrace();
+                }
+            //}
+            //catch(IOException i)
+            //{
+                //i.printStackTrace();
+            //}
+        }
+
+        public void run()
+        {
+            try
+            {
+                DataInputStream in = new DataInputStream(new BufferedInputStream(socket.getInputStream()));
+
+                System.out.println("in run");
+                String line = "";
+
+                while (!line.equals("Over"))
+                {
+                    try
+                    {
+                        line = in.readUTF();
+                        System.out.println(line);
+                        UserInterface.displayMessage(line);
+                    }
+                    catch (IOException i)
+                    {
+                        System.out.println("run");
+                        i.printStackTrace();
+                    }
+                }
+                System.out.println("Connection Closing..");
+            }
+            catch(IOException i)
+            {
+                i.printStackTrace();
+            }
+        }
+    }
+
+    /*public void startServer(int port)
+    {
         // starts server and waits for a connection
         try
         {
@@ -124,7 +226,7 @@ public class Server
         {
             System.out.println(i);
         }
-    }
+    }*/
 
     public void register(String username, String password)
     {
@@ -161,12 +263,13 @@ public class Server
 
         } catch (IOException i)
         {
-            System.out.println(i);
+            i.printStackTrace();
         }
     }
 
     public static void main(String[] args)
     {
         Server.server.startServer(5000);
+        System.out.println("Closing connection");
     }
 }
