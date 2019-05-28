@@ -1,10 +1,11 @@
-import javax.jws.soap.SOAPBinding;
 import java.net.*;
 import java.io.*;
 
 public class Server
 {
     private ServerSocket serverSoc = null;
+    private ServerThread[] clients = new ServerThread[10];
+    private int clientCount = 0;
 
     public static Server server = new Server();
     public static Node head;
@@ -107,82 +108,17 @@ public class Server
             i.printStackTrace();
         }
     }
-
-    static class ServerThread extends Thread
+    public synchronized void receiveMessage(int ID, String input)
     {
-        static Socket socket;
-        //static BufferedReader in = null;
-        static DataInputStream in  = null;
-
-        public ServerThread(Socket s)
+        if (input.equals("Over"))
         {
-            socket = s;
-            //try
-            //{
-                //in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                //DataInputStream in = new DataInputStream(new BufferedInputStream(socket.getInputStream()));
-            //}
-            //catch (IOException i)
-            //{
-                //i.printStackTrace();
-            //}
+            //clients[findClient(ID)].send("Over");
+            //remove(ID);
+            System.out.println("Goodbye Client number: " + ID);
         }
-
-        public static void receiveMessage()
-        {
-            //try
-            //{
-                //DataInputStream in = new DataInputStream(new BufferedInputStream(socket.getInputStream()));
-
-                String line = "";
-
-                try
-                {
-                    line = in.readUTF();
-                    System.out.println(line);
-
-                }
-                catch (IOException i)
-                {
-                    i.printStackTrace();
-                }
-            //}
-            //catch(IOException i)
-            //{
-                //i.printStackTrace();
-            //}
-        }
-
-        public void run()
-        {
-            try
-            {
-                DataInputStream in = new DataInputStream(new BufferedInputStream(socket.getInputStream()));
-
-                System.out.println("in run");
-                String line = "";
-
-                while (!line.equals("Over"))
-                {
-                    try
-                    {
-                        line = in.readUTF();
-                        System.out.println(line);
-                        UserInterface.displayMessage(line);
-                    }
-                    catch (IOException i)
-                    {
-                        System.out.println("run");
-                        i.printStackTrace();
-                    }
-                }
-                System.out.println("Connection Closing..");
-            }
-            catch(IOException i)
-            {
-                i.printStackTrace();
-            }
-        }
+        else
+            for (int i = 0; i < clientCount; i++)
+                clients[i].sendMessage(ID + ": " + input);
     }
 
     /*public void startServer(int port)
