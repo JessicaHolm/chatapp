@@ -1,84 +1,64 @@
 import java.net.*;
 import java.io.*;
+import java.util.*;
 
-public class Server
+public class Server implements Runnable
 {
     private ServerSocket serverSoc = null;
-    private ServerThread[] clients = new ServerThread[10];
-    private int clientCount = 0;
+    private Thread thread = null;
+    List list = new List();
+    //private ServerThread[] clients = new ServerThread[10];
+    //private int clientCount = 0;
 
-    public static Server server = new Server();
-    public static Node head;
+    //public ArrayList<String> regs = new ArrayList<>();
+    //public static int f = 0;
+    //public static Server server = new Server();
+    //public static ArrayList<String> regs = new ArrayList<String>();
+    //ArrayList<ServerThread> online = new ArrayList<>();
+    //public static int f = 0;
 
-    static class Node
-    {
-        Node next;
-        String data;
-
-        Node(String d)
-        {
-            data = d;
-        }
-    }
-
-    Server()
+    Server(int port)
     {
         try
         {
-            FileReader file = new FileReader("UserInfo.txt");
-            BufferedReader in = new BufferedReader(file);
-            String line;
+            serverSoc = new ServerSocket((port));
+            System.out.println("Server started");
 
-            while ((line = in.readLine()) != null)
-                insert(line);
+            if (thread == null)
+            {  thread = new Thread(this);
+                thread.start();
+            }
 
-            in.close();
+            //System.out.println("Waiting for a client ...");
 
-        } catch (IOException i)
+
+        }
+        catch(IOException i)
         {
             i.printStackTrace();
         }
     }
 
-    public void insert(String value)
+    public void run()
     {
-        if(head == null)
-            head = new Node(value);
-        else
+        while (thread != null)
         {
-            Node newNode = new Node(value);
-            newNode.next = head;
-            head = newNode;
+            try
+            {
+                System.out.println("Waiting for a client ...");
+                ServerThread st = new ServerThread(this, serverSoc.accept());
+                List.online.add(st);
+                st.start();
+                System.out.println("Client accepted");
+            }
+            catch (IOException i)
+            {
+                System.out.println("Server accept error");
+                i.printStackTrace();
+            }
         }
     }
 
-    public void remove(String value)
-    {
-        Node curr = head;
-        Node prev = head;
-        while(curr != null)
-        {
-            if(curr.data.equals(value))
-                prev.next = curr.next;
-
-            prev = curr;
-            curr = curr.next;
-        }
-    }
-
-    public void display()
-    {
-        Node curr = head;
-        while(curr != null)
-        {
-            if(curr.next == null)
-                System.out.print(curr.data);
-            else
-                System.out.print(curr.data + " -> ");
-            curr = curr.next;
-        }
-        System.out.println();
-    }
 
     public void startServer(int port)
     {
@@ -86,126 +66,54 @@ public class Server
         {
             serverSoc = new ServerSocket((port));
             System.out.println("Server started");
-            System.out.println("Waiting for a client ...");
 
-            while (true)
-            {
-                try
-                {
-                    Socket socket = serverSoc.accept();
-                    System.out.println("Client accepted");
-                    ServerThread st = new ServerThread(socket);
-                    st.start();
-                } catch (IOException i)
-                {
-                    System.out.println("start");
-                    i.printStackTrace();
-                }
+            if (thread == null)
+            {  thread = new Thread(this);
+                thread.start();
             }
+
+            //System.out.println("Waiting for a client ...");
+
+
         }
         catch(IOException i)
         {
             i.printStackTrace();
         }
     }
-    public synchronized void receiveMessage(int ID, String input)
+
+    public synchronized void receiveMessage(String username, String input)
     {
+        //System.out.println("3");
         if (input.equals("Over"))
         {
             //clients[findClient(ID)].send("Over");
             //remove(ID);
-            System.out.println("Goodbye Client number: " + ID);
+            //System.out.println("Goodbye Client number: ");
         }
         else
-            for (int i = 0; i < clientCount; i++)
-                clients[i].sendMessage(ID + ": " + input);
-    }
-
-    /*public void startServer(int port)
-    {
-        // starts server and waits for a connection
-        try
         {
-            serverSoc = new ServerSocket(port);
-            System.out.println("Server started");
-
-            System.out.println("Waiting for a client ...");
-
-            socket = serverSoc.accept();
-            System.out.println("Client accepted");
-
-            // takes input from the client socket
-            in = new DataInputStream(
-                    new BufferedInputStream(socket.getInputStream()));
-
-            String line = "";
-
-            // reads message from client until "Over" is sent
-            while (!line.equals("Over"))
+            for (ServerThread st : List.online)
             {
-                try
-                {
-                    line = in.readUTF();
-                    System.out.println(line);
-
-                } catch (IOException i)
-                {
-                    System.out.println(i);
-                }
+                //System.out.println("hi");
+                //System.out.println(st);
+                st.sendMessage(username + ": " + input);
             }
-            System.out.println("Closing connection");
-
-            // close connection
-            socket.close();
-            in.close();
-        } catch (IOException i)
-        {
-            System.out.println(i);
-        }
-    }*/
-
-    public void register(String username, String password)
-    {
-        String userInfo = username + ":" + password;
-        insert(userInfo);
-    }
-
-    public int login(String username, String password)
-    {
-        Node curr = head;
-        String userInfo = username + ":" + password;
-
-        while(curr != null)
-        {
-            if(curr.data.equals(userInfo))
-                return 0;
-            curr = curr.next;
-        }
-        return -1;
-    }
-
-    public static void writeToFile()
-    {
-        try
-        {
-            FileWriter out = new FileWriter("UserInfo.txt");
-            Node curr = head;
-            while (curr != null)
-            {
-                out.write(curr.data + "\n");
-                curr = curr.next;
-            }
-            out.close();
-
-        } catch (IOException i)
-        {
-            i.printStackTrace();
         }
     }
 
     public static void main(String[] args)
     {
-        Server.server.startServer(5000);
-        System.out.println("Closing connection");
+        //List list = new List();
+        //list.readFromFile();
+        Server server = new Server(5000);
+
+        //server.startServer(5000);
+        //Server.server.startServer(5000);
+        //System.out.println(regs.get(0));
+        //System.out.println(f);
+        //Server.server.readFromFile();
+        //System.out.println("Closing connection");
+        //writeToFile();
     }
 }

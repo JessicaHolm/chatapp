@@ -9,6 +9,7 @@ public class UserInterface implements ActionListener
     Register reg = new Register();
     Login log = new Login();
     static MainWindow main = new MainWindow();
+    List list = new List();
 
     static class IntroWindow
     {
@@ -39,12 +40,13 @@ public class UserInterface implements ActionListener
 
     public UserInterface()
     {
+        list.readFromFile();
         intro.frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         intro.frame.addWindowListener(new WindowAdapter()
         {
             public void windowClosing(WindowEvent e)
             {
-                Server.writeToFile();
+                list.writeToFile();
                 intro.frame.dispose();
                 System.exit(0);
             }
@@ -79,7 +81,7 @@ public class UserInterface implements ActionListener
         {
             public void windowClosing(WindowEvent e)
             {
-                Server.writeToFile();
+                list.writeToFile();
                 main.frame.dispose();
                 System.exit(0);
             }
@@ -120,14 +122,14 @@ public class UserInterface implements ActionListener
     public static void displayMessage(String line)
     {
         //System.out.println(main.chatBox.getText());
-        SwingUtilities.invokeLater(new Runnable()
-        {
-            public void run()
-            {
+        //SwingUtilities.invokeLater(new Runnable()
+        //{
+            //public void run()
+            //{
                 //System.out.println(main.chatBox.getText());
-                main.chatBox.setText(main.messageBox.getText() + '\n');
-            }
-        });
+                main.chatBox.setText(line);
+            //}
+        //});
     }
 
     public void actionPerformed(ActionEvent e)
@@ -182,14 +184,14 @@ public class UserInterface implements ActionListener
         }
         if("registerPassword".equals(e.getActionCommand()))
         {
-           Server.server.register(reg.textField.getText(), new String(reg.passwordField.getPassword()));
+           list.register(reg.textField.getText(), new String(reg.passwordField.getPassword()));
            JOptionPane.showMessageDialog(reg.frame,"Your account has been created!","Register", JOptionPane.INFORMATION_MESSAGE);
            reg.frame.dispose();
         }
         if("loginPassword".equals(e.getActionCommand()))
         {
             int rc;
-            rc = Server.server.login(log.textField.getText(), new String(log.passwordField.getPassword()));
+            rc = list.login(log.textField.getText(), new String(log.passwordField.getPassword()));
             if(rc == 0)
             {
                 JOptionPane.showMessageDialog(log.frame, "Login Successful!", "Login", JOptionPane.INFORMATION_MESSAGE);
@@ -204,7 +206,7 @@ public class UserInterface implements ActionListener
         {
             //try
             //{
-                Client.sendMessage(main.messageBox.getText());
+                Client.fromUI(main.messageBox.getText());
                 //main.chatBox.append(main.messageBox.getText() + '\n');
                 //main.messageBox.write(Client.out);
                 //System.out.println(Server.ServerThread.in.readLine());
@@ -214,7 +216,7 @@ public class UserInterface implements ActionListener
             //{
                 //System.out.println("ui");
                 //i.printStackTrace();
-           // }
+            //}
         }
     }
 }
