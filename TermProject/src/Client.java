@@ -38,7 +38,7 @@ public class Client implements Runnable
         }
         catch(IOException i)
         {
-            System.out.println("init");
+            //System.out.println("init");
             i.printStackTrace();
         }
 
@@ -62,7 +62,7 @@ public class Client implements Runnable
         // close the connection
     }
 
-
+    //1
     public static void fromUI(String msg)
     {
         try
@@ -78,7 +78,7 @@ public class Client implements Runnable
     }
 
 
-
+    //1
     public void run()
     {
         /*
@@ -103,13 +103,12 @@ public class Client implements Runnable
     }
 
 
-
+    //6
     public void sendMessage(String line)
     {
         //while (UserInterface.isOpen())
         //{
         //System.out.println("6");
-        line = line.concat("\n");
         UserInterface.displayMessage(line);
         //System.out.println(line);
             //try
@@ -121,6 +120,11 @@ public class Client implements Runnable
                 //i.printStackTrace();
             //}
         //}
+    }
+
+    public void sendUser(String user)
+    {
+        UserInterface.updateUserList(user);
     }
 
     /*

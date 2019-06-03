@@ -5,11 +5,13 @@ import javax.swing.*;
 
 public class UserInterface implements ActionListener
 {
+    Font font = new Font("Lucida Sans", Font.BOLD, 12);
     IntroWindow intro = new IntroWindow();
     Register reg = new Register();
     Login log = new Login();
     static MainWindow main = new MainWindow();
     List list = new List();
+    String username = null;
 
     static class IntroWindow
     {
@@ -34,8 +36,9 @@ public class UserInterface implements ActionListener
     {
         JFrame frame = new JFrame("Chat Application");
         JTextField messageBox = new JTextField(40);
-        JTextArea chatBox = new JTextArea("test",5, 20);
+        JTextArea chatBox = new JTextArea(5, 20);
         JScrollPane scrollPane = new JScrollPane(chatBox);
+        DefaultListModel listModel = new DefaultListModel();
     }
 
     public UserInterface()
@@ -88,20 +91,23 @@ public class UserInterface implements ActionListener
         });
 
         JPanel panel = (JPanel) main.frame.getContentPane();
+        JButton logout = new JButton("Logout");
+        logout.addActionListener(this);
+        logout.setActionCommand("logout");
 
         main.messageBox.addActionListener(this);
         main.messageBox.setActionCommand("send");
-
         main.chatBox.setEditable(false);
+        main.chatBox.setFont(font);
 
-        DefaultListModel listModel = new DefaultListModel();
+        //DefaultListModel listModel = new DefaultListModel();
 
-        listModel = new DefaultListModel();
-        listModel.addElement("Jane Doe");
-        listModel.addElement("John Smith");
-        listModel.addElement("Kathy Green");
+        main.listModel = new DefaultListModel();
+        //listModel.addElement("Jane Doe");
+        //listModel.addElement("John Smith");
+        //main.listModel.addElement("Kathy Green");
 
-        JList list = new JList(listModel);
+        JList list = new JList(main.listModel);
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         list.setSelectedIndex(0);
         JScrollPane listScrollPane = new JScrollPane(list);
@@ -109,6 +115,7 @@ public class UserInterface implements ActionListener
         panel.add(main.messageBox, BorderLayout.PAGE_END);
         panel.add(main.scrollPane, BorderLayout.CENTER);
         panel.add(listScrollPane, BorderLayout.LINE_END);
+        panel.add(logout, BorderLayout.PAGE_START);
 
         main.frame.setSize(1000,800);
         main.frame.setVisible(true);
@@ -127,9 +134,21 @@ public class UserInterface implements ActionListener
             //public void run()
             //{
                 //System.out.println(main.chatBox.getText());
-                main.chatBox.setText(line);
+                main.chatBox.append(line + "\n");
+                //main.chatBox.append("\n");
+                //main.messageBox.
             //}
         //});
+    }
+
+    public static void updateUserList(String user)
+    {
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                if(!main.listModel.contains(user))
+                    main.listModel.addElement(user);
+            }
+        });
     }
 
     public void actionPerformed(ActionEvent e)
@@ -138,6 +157,7 @@ public class UserInterface implements ActionListener
         {
             JPanel panel = (JPanel) reg.frame.getContentPane();
 
+            reg.textField.setFont(font);
             reg.textField.setBounds(100,100, 200,30);
 
             reg.passwordField.setBounds(100,150, 200,30);
@@ -162,6 +182,7 @@ public class UserInterface implements ActionListener
         {
             JPanel panel = (JPanel) log.frame.getContentPane();
 
+            reg.textField.setFont(font);
             log.textField.setBounds(100,100, 200,30);
 
             log.passwordField.setBounds(100,150, 200,30);
@@ -195,6 +216,8 @@ public class UserInterface implements ActionListener
             if(rc == 0)
             {
                 JOptionPane.showMessageDialog(log.frame, "Login Successful!", "Login", JOptionPane.INFORMATION_MESSAGE);
+                username = log.textField.getText();
+                Client.fromUI(username);
                 log.frame.dispose();
                 intro.frame.dispose();
                 mainChat();
@@ -206,7 +229,8 @@ public class UserInterface implements ActionListener
         {
             //try
             //{
-                Client.fromUI(main.messageBox.getText());
+                Client.fromUI(username + ": " + main.messageBox.getText());
+                main.messageBox.setText("");
                 //main.chatBox.append(main.messageBox.getText() + '\n');
                 //main.messageBox.write(Client.out);
                 //System.out.println(Server.ServerThread.in.readLine());
@@ -217,6 +241,12 @@ public class UserInterface implements ActionListener
                 //System.out.println("ui");
                 //i.printStackTrace();
             //}
+        }
+        if("logout".equals(e.getActionCommand()))
+        {
+            list.writeToFile();
+            main.frame.dispose();
+            System.exit(0);
         }
     }
 }

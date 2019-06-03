@@ -82,7 +82,8 @@ public class Server implements Runnable
         }
     }
 
-    public synchronized void receiveMessage(String username, String input)
+    //3
+    public synchronized void receiveMessage(String input)
     {
         //System.out.println("3");
         if (input.equals("Over"))
@@ -97,8 +98,18 @@ public class Server implements Runnable
             {
                 //System.out.println("hi");
                 //System.out.println(st);
-                st.sendMessage(username + ": " + input);
+                st.sendMessage(input);
             }
+        }
+    }
+
+    //3
+    public synchronized void receiveUser(String user)
+    {
+        for (ServerThread st : List.online)
+        {
+            st.sendUser(List.online);
+            //UserInterface.updateUserList(user);
         }
     }
 

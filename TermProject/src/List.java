@@ -79,7 +79,7 @@ public class List
         {
             if(i.equals(userInfo))
             {
-                ServerThread.setUserName(username);
+                //ServerThread.setUserName(username);
                 return 0;
             }
         }
