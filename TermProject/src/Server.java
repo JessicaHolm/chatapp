@@ -1,172 +1,163 @@
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
-
 import java.net.*;
 import java.io.*;
 
-public class Server
+public class Server implements Runnable
 {
-    //initialize socket and input stream
-    private Socket socket = null;
     private ServerSocket serverSoc = null;
-    private DataInputStream in = null;
+    private Thread thread = null;
+    //******************List list = new List();
+    //private ServerThread[] clients = new ServerThread[10];
+    //private int clientCount = 0;
 
-    public static Server server = new Server();
-    public static Node head;
+    //public ArrayList<String> regs = new ArrayList<>();
+    //public static int f = 0;
+    //public static Server server = new Server();
+    //public static ArrayList<String> regs = new ArrayList<String>();
+    //ArrayList<ServerThread> online = new ArrayList<>();
+    //public static int f = 0;
 
-    static class Node
-    {
-        Node next;
-        String data;
-
-        Node(String d)
-        {
-            data = d;
-        }
-    }
-
-    Server()
+    Server(int port)
     {
         try
         {
-            FileReader file = new FileReader("UserInfo.txt");
-            BufferedReader in = new BufferedReader(file);
-            String line = null;
-
-            while ((line = in.readLine()) != null)
-                insert(line);
-
-            in.close();
-
-        } catch (IOException i)
-        {
-            System.out.println(i);
-        }
-    }
-
-    public void insert(String value)
-    {
-        if(head == null)
-            head = new Node(value);
-        else
-        {
-            Node newNode = new Node(value);
-            newNode.next = head;
-            head = newNode;
-        }
-    }
-
-    public void remove(String value)
-    {
-        Node curr = head;
-        Node prev = head;
-        while(curr != null)
-        {
-            if(curr.data.equals(value))
-                prev.next = curr.next;
-
-            prev = curr;
-            curr = curr.next;
-        }
-    }
-
-    public void display()
-    {
-        Node curr = head;
-        while(curr != null)
-        {
-            if(curr.next == null)
-                System.out.print(curr.data);
-            else
-                System.out.print(curr.data + " -> ");
-            curr = curr.next;
-        }
-        System.out.println();
-    }
-
-    public void startServer(int port)
-    {
-        // starts server and waits for a connection
-        try
-        {
-            serverSoc = new ServerSocket(port);
+            serverSoc = new ServerSocket((port));
             System.out.println("Server started");
 
-            System.out.println("Waiting for a client ...");
+            //*****************if (thread == null)
+            //{
+                thread = new Thread(this);
+                thread.start();
+            //}
 
-            socket = serverSoc.accept();
-            System.out.println("Client accepted");
+            //System.out.println("Waiting for a client ...");
 
-            // takes input from the client socket
-            in = new DataInputStream(
-                    new BufferedInputStream(socket.getInputStream()));
 
-            String line = "";
+        }
+        catch(IOException i)
+        {
+            System.out.println("IO error: " + i.getMessage());
+        }
+    }
 
-            // reads message from client until "Over" is sent
-            while (!line.equals("Over"))
+    public void run()
+    {
+        while (thread != null)
+        {
+            try
             {
-                try
-                {
-                    line = in.readUTF();
-                    System.out.println(line);
-
-                } catch (IOException i)
-                {
-                    System.out.println(i);
-                }
+                System.out.println("Waiting for a client ...");
+                ServerThread st = new ServerThread(this, serverSoc.accept());
+                List.online.add(st);
+                st.start();
+                System.out.println("Client accepted");
             }
-            System.out.println("Closing connection");
-
-            // close connection
-            socket.close();
-            in.close();
-        } catch (IOException i)
-        {
-            System.out.println(i);
+            catch (IOException i)
+            {
+                System.out.println("IO error: " + i.getMessage());
+            }
         }
     }
 
-    public void register(String username, String password)
-    {
-        String userInfo = username + ":" + password;
-        insert(userInfo);
-    }
-
-    public int login(String username, String password)
-    {
-        Node curr = head;
-        String userInfo = username + ":" + password;
-
-        while(curr != null)
-        {
-            if(curr.data.equals(userInfo))
-                return 0;
-            curr = curr.next;
-        }
-        return -1;
-    }
-
-    public static void writeToFile()
+    /*
+    public void startServer(int port)
     {
         try
         {
-            FileWriter out = new FileWriter("UserInfo.txt");
-            Node curr = head;
-            while (curr != null)
-            {
-                out.write(curr.data + "\n");
-                curr = curr.next;
-            }
-            out.close();
+            serverSoc = new ServerSocket((port));
+            System.out.println("Server started");
 
-        } catch (IOException i)
+            if (thread == null)
+            {  thread = new Thread(this);
+                thread.start();
+            }
+
+            //System.out.println("Waiting for a client ...");
+
+
+        }
+        catch(IOException i)
         {
-            System.out.println(i);
+            System.out.println("IO error: " + i.getMessage());
+        }
+    }
+     */
+
+    //3
+    public synchronized void receiveMessage(String input)
+    {
+        //System.out.println("3");
+
+        for (ServerThread st : List.online)
+        {
+                //System.out.println("hi");
+                //System.out.println(st);
+            st.sendMessage(input);
+        }
+
+    }
+
+    //3
+    public synchronized void receiveUser()
+    {
+        for (ServerThread st : List.online)
+        {
+            st.sendUser(List.online);
+            //UserInterface.updateUserList(user);
+        }
+    }
+
+    public synchronized void logout(String user)
+    {
+        for (ServerThread st : List.online)
+        {
+            st.sendLogout(user);
+            //UserInterface.updateUserList(user);
+        }
+    }
+
+    public synchronized void receivePMessage(String input)
+    {
+        int indexSender = input.indexOf(':');
+        int indexRecipient = input.indexOf(';');
+        String sender = input.substring(1, indexSender);
+        String recipient = input.substring(indexRecipient + 1);
+        input = input.substring(0, indexRecipient);
+        System.out.println(sender);
+        System.out.println(recipient);
+        //System.out.println("3");
+        for (ServerThread st : List.online)
+        {
+            if(st.getUserName().equals(recipient) || st.getUserName().equals(sender))
+                //System.out.println("hi");
+                //System.out.println(st);
+                st.sendPMessage(input);
+        }
+
+    }
+
+    public synchronized void remove(String username)
+    {
+        //for (ServerThread st : List.online)
+        for (int i = 0; i < List.online.size(); i++)
+        {
+            ServerThread st = List.online.get(i);
+            if(st.getUserName().equals(username))
+                List.online.remove(st);
         }
     }
 
     public static void main(String[] args)
     {
-        Server.server.startServer(5000);
+        //List list = new List();
+        //list.readFromFile();
+        new Server(5000);
+
+        //server.startServer(5000);
+        //Server.server.startServer(5000);
+        //System.out.println(regs.get(0));
+        //System.out.println(f);
+        //Server.server.readFromFile();
+        //System.out.println("Closing connection");
+        //writeToFile();
     }
 }
