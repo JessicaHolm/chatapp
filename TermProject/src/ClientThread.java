@@ -6,6 +6,7 @@ public class ClientThread extends Thread
     private Socket socket = null;
     private Client client = null;
     private DataInputStream in = null;
+    private volatile boolean flag = true;
 
     public ClientThread(Client c, Socket s) throws IOException
     {
@@ -21,25 +22,35 @@ public class ClientThread extends Thread
     {
         String input = "";
 
-        while (true)
+        while (flag)
         {
             try
             {
                 //System.out.println("5");
                 input = in.readUTF();
-                //System.out.println(input);
-                if(input.contains(":"))
+                if(input.contains("2"))
                 {
+                    input = input.replace('2', '\0');
                     client.sendMessage(input);
+                }
+                else if(input.contains("3"))
+                {
+                    input = input.replace('3', '\0');
+                    client.sendLogout(input);
                 }
                 else
                     client.sendUser(input);
             }
             catch(IOException i)
             {
-                System.out.println("Listening error: " + i.getMessage());
-                //System.exit(0);
+                System.out.println("IO error: " + i.getMessage());
+                stopThread();
             }
         }
+    }
+
+    public void stopThread()
+    {
+        flag = false;
     }
 }

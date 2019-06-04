@@ -10,10 +10,12 @@ public class Client implements Runnable
     //private DataInputStream input = null;
     //static BufferedWriter out = null;
     static DataOutputStream out = null;
+    private UserInterface ui = null;
 
     // constructor to put ip address and port
     public Client(String address, int port)
     {
+        ui = new UserInterface();
         // establish a connection
         try
         {
@@ -39,7 +41,7 @@ public class Client implements Runnable
         catch(IOException i)
         {
             //System.out.println("init");
-            i.printStackTrace();
+            System.out.println("IO error: " + i.getMessage());
         }
 
         // string to read message from input
@@ -70,9 +72,9 @@ public class Client implements Runnable
             out.writeUTF(msg);
             out.flush();
         }
-        catch(IOException ioe)
+        catch(IOException i)
         {
-            System.out.println("Sending error: " + ioe.getMessage());
+            System.out.println("IO error: " + i.getMessage());
             //stop();
         }
     }
@@ -109,7 +111,7 @@ public class Client implements Runnable
         //while (UserInterface.isOpen())
         //{
         //System.out.println("6");
-        UserInterface.displayMessage(line);
+        ui.displayMessage(line);
         //System.out.println(line);
             //try
             //{
@@ -124,7 +126,12 @@ public class Client implements Runnable
 
     public void sendUser(String user)
     {
-        UserInterface.updateUserList(user);
+        ui.addUser(user);
+    }
+
+    public void sendLogout(String user)
+    {
+        ui.removeUser(user);
     }
 
     /*
@@ -145,8 +152,9 @@ public class Client implements Runnable
     {
         //Server server = new Server();
         //List list = new List();
-        UserInterface ui = new UserInterface();
         Client client = new Client("127.0.0.1", 5000);
+        //UserInterface ui = new UserInterface();
+        //Client client = new Client("127.0.0.1", 5000);
         //server.writeToFile();
         //System.out.println(Server.regs.get(0));
         //System.out.println(Server.f);

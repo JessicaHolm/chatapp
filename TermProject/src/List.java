@@ -5,6 +5,7 @@ public class List
 {
     public static ArrayList<String> regs = new ArrayList<>();
     public static ArrayList<ServerThread> online = new ArrayList<>();
+    public static ArrayList<String> messages = new ArrayList<>();
 
     /*
     public List()
@@ -28,7 +29,7 @@ public class List
     }
      */
 
-    public void readFromFile()
+    public void readUsersFromFile()
     {
         try
         {
@@ -44,31 +45,65 @@ public class List
         }
         catch (IOException i)
         {
-            i.printStackTrace();
+            System.out.println("IO error: " + i.getMessage());
         }
     }
 
-    public void writeToFile()
+    public void readMessagesFromFile(String username)
     {
         try
         {
-            FileWriter out = new FileWriter("UserInfo.txt");
+            FileReader file = new FileReader(username + ".txt");
+            BufferedReader in = new BufferedReader(file);
+            String line;
+
+            while ((line = in.readLine()) != null)
+                messages.add(line);
+
+            in.close();
+
+        }
+        catch (IOException i)
+        {
+            System.out.println("IO error: " + i.getMessage());
+        }
+    }
+
+    public void writeToFile(String username)
+    {
+        try
+        {
+            FileWriter outUser = new FileWriter("UserInfo.txt");
+            FileWriter outMessage = new FileWriter(username + ".txt");
 
             for (String i : regs)
-                out.write(i + "\n");
+                outUser.write(i + "\n");
+            outUser.close();
 
-            out.close();
+            for (String i : messages)
+                outMessage.write(i + "\n");
+            outMessage.close();
 
-        } catch (IOException i)
+        }
+        catch (IOException i)
         {
-            i.printStackTrace();
+            System.out.println("IO error: " + i.getMessage());
         }
     }
 
     public void register(String username, String password)
     {
-        String userInfo = username + ":" + password;
-        regs.add(userInfo);
+        try
+        {
+            FileWriter outMessage = new FileWriter(username + ".txt");
+            String userInfo = username + ":" + password;
+            regs.add(userInfo);
+            outMessage.close();
+        }
+        catch (IOException i)
+        {
+            System.out.println("IO error: " + i.getMessage());
+        }
     }
 
     public int login(String username, String password)
@@ -84,5 +119,10 @@ public class List
             }
         }
         return -1;
+    }
+
+    public void record(String message)
+    {
+        messages.add(message);
     }
 }

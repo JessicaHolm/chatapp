@@ -9,6 +9,7 @@ public class ServerThread extends Thread
     private DataInputStream in  = null;
     private DataOutputStream out  = null;
     private String username = null;
+    private volatile boolean flag = true;
 
     public ServerThread(Server serve, Socket s) throws IOException
     {
@@ -24,6 +25,11 @@ public class ServerThread extends Thread
         username = user;
     }
 
+    public String getUserName()
+    {
+        return username;
+    }
+
     //4
     public void sendMessage(String line)
     {
@@ -36,7 +42,7 @@ public class ServerThread extends Thread
         }
         catch (IOException i)
         {
-            i.printStackTrace();
+            System.out.println("IO error: " + i.getMessage());
         }
     }
 
@@ -54,7 +60,24 @@ public class ServerThread extends Thread
         }
         catch (IOException i)
         {
-            i.printStackTrace();
+            System.out.println("IO error: " + i.getMessage());
+        }
+    }
+
+    public void sendLogout(String line)
+    {
+        try
+        {
+            //System.out.println("4");
+            //for (ServerThread st : online)
+            //{
+                out.writeUTF(line);
+                out.flush();
+            //}
+        }
+        catch (IOException i)
+        {
+            System.out.println("IO error: " + i.getMessage());
         }
     }
 
@@ -64,17 +87,33 @@ public class ServerThread extends Thread
         System.out.println("Running Server");
         String input = "";
 
-        while (true)
+        while (flag)
         {
             try
             {
                 input = in.readUTF();
-                if(input.contains(":"))
-                    server.receiveMessage(input);
-                else
+                if(input.contains("1"))
                 {
+                    System.out.println(input);
+                    input = input.replace('1', '\0');
+                    System.out.println(input);
                     setUserName(input);
+                    //input = input.concat("1");
+                    //System.out.println(input);
                     server.receiveUser(input);
+                }
+                else if(input.contains("2"))
+                {
+                    //System.out.println(input);
+                    //input = input.replace('2', '\0');
+                    //setUserName(input);
+                    //input = input.concat("2");
+                    server.receiveMessage(input);
+                }
+                else if(input.contains("3"))
+                {
+                    //input = input.replace('3', '\0');
+                    server.logout(input);
                 }
                 //line = in.readUTF();
                 //System.out.println(in.readUTF());
@@ -84,11 +123,16 @@ public class ServerThread extends Thread
             }
             catch (IOException i)
             {
-                System.exit(0);
-                System.out.println("run");
-                i.printStackTrace();
-
+                System.out.println("IO error: " + i.getMessage());
+                System.out.println(this);
+                server.remove(username);
+                stopThread();
             }
         }
+    }
+
+    public void stopThread()
+    {
+        flag = false;
     }
 }

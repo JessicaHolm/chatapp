@@ -35,7 +35,7 @@ public class Server implements Runnable
         }
         catch(IOException i)
         {
-            i.printStackTrace();
+            System.out.println("IO error: " + i.getMessage());
         }
     }
 
@@ -53,12 +53,10 @@ public class Server implements Runnable
             }
             catch (IOException i)
             {
-                System.out.println("Server accept error");
-                i.printStackTrace();
+                System.out.println("IO error: " + i.getMessage());
             }
         }
     }
-
 
     public void startServer(int port)
     {
@@ -78,7 +76,7 @@ public class Server implements Runnable
         }
         catch(IOException i)
         {
-            i.printStackTrace();
+            System.out.println("IO error: " + i.getMessage());
         }
     }
 
@@ -110,6 +108,26 @@ public class Server implements Runnable
         {
             st.sendUser(List.online);
             //UserInterface.updateUserList(user);
+        }
+    }
+
+    public synchronized void logout(String user)
+    {
+        for (ServerThread st : List.online)
+        {
+            st.sendLogout(user);
+            //UserInterface.updateUserList(user);
+        }
+    }
+
+    public synchronized void remove(String username)
+    {
+        //for (ServerThread st : List.online)
+        for (int i = 0; i < List.online.size(); i++)
+        {
+            ServerThread st = List.online.get(i);
+            if(st.getUserName().equals(username))
+                List.online.remove(st);
         }
     }
 
