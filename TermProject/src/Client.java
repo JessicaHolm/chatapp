@@ -134,6 +134,11 @@ public class Client implements Runnable
         ui.removeUser(user);
     }
 
+    public void sendPMessage(String line)
+    {
+        ui.displayPMessage(line);
+    }
+
     /*
     public void start() throws IOException
     {

@@ -120,6 +120,32 @@ public class Server implements Runnable
         }
     }
 
+    public synchronized void receivePMessage(String input)
+    {
+        int indexSender = input.indexOf(':');
+        int indexRecipient = input.indexOf(';');
+        String sender = input.substring(0, indexSender);
+        String recipient = input.substring(indexRecipient + 1, input.length());
+        input = input.substring(0, indexRecipient);
+        //System.out.println("3");
+        if (input.equals("Over"))
+        {
+            //clients[findClient(ID)].send("Over");
+            //remove(ID);
+            //System.out.println("Goodbye Client number: ");
+        }
+        else
+        {
+            for (ServerThread st : List.online)
+            {
+                if(st.getUserName().equals(recipient) || st.getUserName().equals(sender))
+                    //System.out.println("hi");
+                    //System.out.println(st);
+                    st.sendPMessage(input);
+            }
+        }
+    }
+
     public synchronized void remove(String username)
     {
         //for (ServerThread st : List.online)

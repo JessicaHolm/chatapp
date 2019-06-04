@@ -30,13 +30,18 @@ public class ClientThread extends Thread
                 input = in.readUTF();
                 if(input.contains("2"))
                 {
-                    input = input.replace('2', '\0');
+                    input = input.substring(1);
                     client.sendMessage(input);
                 }
                 else if(input.contains("3"))
                 {
-                    input = input.replace('3', '\0');
+                    input = input.substring(1);
                     client.sendLogout(input);
+                }
+                else if(input.contains("4"))
+                {
+                    input = input.substring(1);
+                    client.sendPMessage(input);
                 }
                 else
                     client.sendUser(input);

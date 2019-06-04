@@ -15,6 +15,7 @@ public class UserInterface implements ActionListener
 
     List list = new List();
     String username = null;
+    String recipient = null;
 
     private class IntroWindow
     {
@@ -137,7 +138,7 @@ public class UserInterface implements ActionListener
         main.listModel = new DefaultListModel<>();
 
 
-        JList<String> list = new JList<String>(main.listModel);
+        JList<String> list = new JList<>(main.listModel);
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         list.setCellRenderer(new UserListRenderer());
         JScrollPane listScrollPane = new JScrollPane(list);
@@ -149,7 +150,9 @@ public class UserInterface implements ActionListener
                 //JList list = (JList) evt.getSource();
                 if (evt.getClickCount() == 2)
                 {
-                    privateMessage(list.getSelectedValue());
+                    //System.out.println(list.getSelectedValue());
+                    recipient = list.getSelectedValue();
+                    privateMessage();
                     // Double-click detected
                     //int index = list.locationToIndex(evt.getPoint());
                 }
@@ -205,9 +208,17 @@ public class UserInterface implements ActionListener
            records.recordsBox.append(line + "\n");
     }
 
-    public void privateMessage(String recipient)
+    public void displayPMessage(String line)
     {
-        pmWindow.frame.setTitle("Private Chat with " + recipient);
+        privateMessage();
+        pmWindow.chatBox.append(line + "\n");
+    }
+
+    public void privateMessage()
+    {
+        System.out.println(recipient);
+        pmWindow.frame.setTitle(username + " Private Chat with " + recipient);
+        //System.out.print(recipient);
 
         pmWindow.frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         pmWindow.frame.addWindowListener(new WindowAdapter()
@@ -220,6 +231,8 @@ public class UserInterface implements ActionListener
 
         JPanel panel = (JPanel) pmWindow.frame.getContentPane();
 
+        pmWindow.messageBox.addActionListener(this);
+        pmWindow.messageBox.setActionCommand("sendPM");
         pmWindow.chatBox.setEditable(false);
         pmWindow.chatBox.setFont(font);
 
@@ -311,6 +324,13 @@ public class UserInterface implements ActionListener
             Client.fromUI(msg);
             list.record(msg);
             main.messageBox.setText("");
+        }
+        if("sendPM".equals(e.getActionCommand()))
+        {
+            String msg = "4" + username + ": " + pmWindow.messageBox.getText() + ";" + recipient;
+            Client.fromUI(msg);
+            list.record(msg);
+            pmWindow.messageBox.setText("");
         }
         if("logout".equals(e.getActionCommand()))
         {

@@ -81,6 +81,21 @@ public class ServerThread extends Thread
         }
     }
 
+    public void sendPMessage(String line)
+    {
+        //System.out.println("4");
+        try
+        {
+            //System.out.println("4");
+            out.writeUTF(line);
+            out.flush();
+        }
+        catch (IOException i)
+        {
+            System.out.println("IO error: " + i.getMessage());
+        }
+    }
+
     //2
     public void run()
     {
@@ -94,9 +109,9 @@ public class ServerThread extends Thread
                 input = in.readUTF();
                 if(input.contains("1"))
                 {
-                    System.out.println(input);
-                    input = input.replace('1', '\0');
-                    System.out.println(input);
+                    //System.out.println(input);
+                    input = input.substring(1);
+                    //System.out.println(input);
                     setUserName(input);
                     //input = input.concat("1");
                     //System.out.println(input);
@@ -114,6 +129,11 @@ public class ServerThread extends Thread
                 {
                     //input = input.replace('3', '\0');
                     server.logout(input);
+                }
+                else if(input.contains("4"))
+                {
+                    //input = input.replace('3', '\0');
+                    server.receivePMessage(input);
                 }
                 //line = in.readUTF();
                 //System.out.println(in.readUTF());

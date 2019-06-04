@@ -123,6 +123,7 @@ public class List
 
     public void record(String message)
     {
+        message = message.substring(1);
         messages.add(message);
     }
 }
