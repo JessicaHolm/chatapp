@@ -23,14 +23,14 @@ public class UserInterface implements ActionListener
 
     private class Register
     {
-        JFrame frame = new JFrame("Register");
+        JFrame frame = null;
         JTextField textField = new JTextField(10);
         JPasswordField passwordField = new JPasswordField(10);
     }
 
     private class Login
     {
-        JFrame frame = new JFrame("Login");
+        JFrame frame = null;
         JTextField textField = new JTextField(10);
         JPasswordField passwordField = new JPasswordField(10);
     }
@@ -52,7 +52,7 @@ public class UserInterface implements ActionListener
 
     private class PM
     {
-        JFrame frame = new JFrame();
+        JFrame frame = null;
         JTextField messageBox = new JTextField(40);
         JTextArea chatBox = new JTextArea(5, 20);
         JScrollPane scrollPane = new JScrollPane(chatBox);
@@ -146,17 +146,13 @@ public class UserInterface implements ActionListener
         {
             public void mouseClicked(MouseEvent evt)
             {
-                //JList list = (JList) evt.getSource();
                 if (evt.getClickCount() == 2)
                 {
-                    //System.out.println(list.getSelectedValue());
                     recipient = list.getSelectedValue();
-                    if(!pmWindow.frame.isVisible())
+                    if(pmWindow.frame == null)
                         privateMessage();
-                    //else
-                        //pmWindow.frame.setVisible(true);
-                    // Double-click detected
-                    //int index = list.locationToIndex(evt.getPoint());
+                    else
+                        pmWindow.frame.setVisible(true);
                 }
             }
         });
@@ -228,87 +224,107 @@ public class UserInterface implements ActionListener
 
     public void privateMessage()
     {
-        //System.out.println(recipient);
-        pmWindow.frame.setTitle(username + " Private Chat with " + recipient);
-        //System.out.print(recipient);
-
-        pmWindow.frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        pmWindow.frame.addWindowListener(new WindowAdapter()
+        if(pmWindow.frame == null)
         {
-            public void windowClosing(WindowEvent e)
+            //System.out.println(recipient);
+            pmWindow.frame = new JFrame(username + " Private Chat with " + recipient);
+            //pmWindow.frame.setTitle(username + " Private Chat with " + recipient);
+            //System.out.print(recipient);
+
+            /*
+            pmWindow.frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+            pmWindow.frame.addWindowListener(new WindowAdapter()
             {
-                pmWindow.frame.dispose();
-            }
-        });
+                public void windowClosing(WindowEvent e)
+                {
+                    pmWindow.frame.dispose();
+                }
+            });
+             */
 
-        JPanel panel = (JPanel) pmWindow.frame.getContentPane();
+            JPanel panel = (JPanel) pmWindow.frame.getContentPane();
 
-        pmWindow.messageBox.addActionListener(this);
-        pmWindow.messageBox.setActionCommand("sendPM");
-        pmWindow.chatBox.setEditable(false);
-        pmWindow.chatBox.setFont(font);
+            pmWindow.messageBox.addActionListener(this);
+            pmWindow.messageBox.setActionCommand("sendPM");
+            pmWindow.chatBox.setEditable(false);
+            pmWindow.chatBox.setFont(font);
 
-        panel.add(pmWindow.messageBox, BorderLayout.PAGE_END);
-        panel.add(pmWindow.scrollPane, BorderLayout.CENTER);
+            panel.add(pmWindow.messageBox, BorderLayout.PAGE_END);
+            panel.add(pmWindow.scrollPane, BorderLayout.CENTER);
 
-        pmWindow.frame.setSize(500,500);
-        pmWindow.frame.setLocationRelativeTo(main.frame);
-        pmWindow.frame.setVisible(true);
+            pmWindow.frame.setSize(500, 500);
+            pmWindow.frame.setLocationRelativeTo(main.frame);
+            pmWindow.frame.setVisible(true);
+        }
+        else
+            pmWindow.frame.setVisible(true);
     }
 
     public void actionPerformed(ActionEvent e)
     {
         if("register".equals(e.getActionCommand()))
         {
-            JPanel panel = (JPanel) reg.frame.getContentPane();
+            if(reg.frame == null)
+            {
+                reg.frame = new JFrame("Register");
+                JPanel panel = (JPanel) reg.frame.getContentPane();
 
-            reg.textField.setFont(font);
-            reg.textField.setBounds(100,100, 200,30);
+                reg.textField.setFont(font);
+                reg.textField.setBounds(100, 100, 200, 30);
 
-            reg.passwordField.setBounds(100,150, 200,30);
-            reg.passwordField.setActionCommand("registerPassword");
-            reg.passwordField.addActionListener(this);
+                reg.passwordField.setBounds(100, 150, 200, 30);
+                reg.passwordField.setActionCommand("registerPassword");
+                reg.passwordField.addActionListener(this);
 
-            JLabel textFieldLabel = new JLabel("Username: ");
-            textFieldLabel.setBounds(25, 110, 300, 10);
+                JLabel textFieldLabel = new JLabel("Username: ");
+                textFieldLabel.setBounds(25, 110, 300, 10);
 
-            JLabel passwordFieldLabel = new JLabel("Password: ");
-            passwordFieldLabel.setBounds(25, 160, 300, 10);
+                JLabel passwordFieldLabel = new JLabel("Password: ");
+                passwordFieldLabel.setBounds(25, 160, 300, 10);
 
-            panel.add(reg.textField);
-            panel.add(textFieldLabel);
-            panel.add(reg.passwordField);
-            panel.add(passwordFieldLabel);
-            reg.frame.setSize(500,500);
-            reg.frame.setLayout(null);
-            reg.frame.setLocationRelativeTo(intro.frame);
-            reg.frame.setVisible(true);
+                panel.add(reg.textField);
+                panel.add(textFieldLabel);
+                panel.add(reg.passwordField);
+                panel.add(passwordFieldLabel);
+                reg.frame.setSize(500, 500);
+                reg.frame.setLayout(null);
+                reg.frame.setLocationRelativeTo(intro.frame);
+                reg.frame.setVisible(true);
+            }
+            else
+                reg.frame.setVisible(true);
         }
         if("login".equals(e.getActionCommand()))
         {
-            JPanel panel = (JPanel) log.frame.getContentPane();
+            if(log.frame == null)
+            {
+                log.frame = new JFrame("Login");
+                JPanel panel = (JPanel) log.frame.getContentPane();
 
-            log.textField.setFont(font);
-            log.textField.setBounds(100,100, 200,30);
+                log.textField.setFont(font);
+                log.textField.setBounds(100, 100, 200, 30);
 
-            log.passwordField.setBounds(100,150, 200,30);
-            log.passwordField.setActionCommand("loginPassword");
-            log.passwordField.addActionListener(this);
+                log.passwordField.setBounds(100, 150, 200, 30);
+                log.passwordField.setActionCommand("loginPassword");
+                log.passwordField.addActionListener(this);
 
-            JLabel textFieldLabel = new JLabel("Username: ");
-            textFieldLabel.setBounds(25, 110, 300, 10);
+                JLabel textFieldLabel = new JLabel("Username: ");
+                textFieldLabel.setBounds(25, 110, 300, 10);
 
-            JLabel passwordFieldLabel = new JLabel("Password: ");
-            passwordFieldLabel.setBounds(25, 160, 300, 10);
+                JLabel passwordFieldLabel = new JLabel("Password: ");
+                passwordFieldLabel.setBounds(25, 160, 300, 10);
 
-            panel.add(log.textField);
-            panel.add(textFieldLabel);
-            panel.add(log.passwordField);
-            panel.add(passwordFieldLabel);
-            log.frame.setSize(500,500);
-            log.frame.setLayout(null);
-            log.frame.setLocationRelativeTo(intro.frame);
-            log.frame.setVisible(true);
+                panel.add(log.textField);
+                panel.add(textFieldLabel);
+                panel.add(log.passwordField);
+                panel.add(passwordFieldLabel);
+                log.frame.setSize(500, 500);
+                log.frame.setLayout(null);
+                log.frame.setLocationRelativeTo(intro.frame);
+                log.frame.setVisible(true);
+            }
+            else
+                log.frame.setVisible(true);
         }
         if("registerPassword".equals(e.getActionCommand()))
         {
@@ -358,6 +374,7 @@ public class UserInterface implements ActionListener
         {
             records.recordsBox.setFont(font);
             records.frame.setTitle("Chat Records for " + username);
+
             records.frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
             records.frame.addWindowListener(new WindowAdapter()
             {
