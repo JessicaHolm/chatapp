@@ -106,6 +106,18 @@ public class Server implements Runnable
         }
     }
 
+    public synchronized void receiveLogin(String user)
+    {
+        for (ServerThread st : List.online)
+        {
+            System.out.println(st.getUserName());
+            System.out.println(user);
+            if(!st.getUserName().equals(user))
+                st.sendMessage(user);
+            //UserInterface.updateUserList(user);
+        }
+    }
+
     public synchronized void logout(String user)
     {
         for (ServerThread st : List.online)

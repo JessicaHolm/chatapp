@@ -139,6 +139,11 @@ public class Client implements Runnable
         ui.displayPMessage(line);
     }
 
+    public void sendLogin(String line)
+    {
+        ui.loginPopUp(line);
+    }
+
     /*
     public void start() throws IOException
     {

@@ -43,6 +43,11 @@ public class ClientThread extends Thread
                     input = input.substring(1);
                     client.sendPMessage(input);
                 }
+                else if(input.contains("5"))
+                {
+                    input = input.substring(1);
+                    client.sendLogin(input);
+                }
                 else
                     client.sendUser(input);
             }

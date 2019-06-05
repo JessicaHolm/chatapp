@@ -123,7 +123,13 @@ public class List
 
     public void record(String message)
     {
+        int index;
         message = message.substring(1);
+        if(message.contains(";"))
+        {
+            index = message.indexOf(';');
+            message = message.substring(0, index);
+        }
         messages.add(message);
     }
 }

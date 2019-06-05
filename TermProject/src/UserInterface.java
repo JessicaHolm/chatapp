@@ -114,6 +114,7 @@ public class UserInterface implements ActionListener
         {
             public void windowClosing(WindowEvent e)
             {
+                Client.fromUI("3" + username);
                 list.writeToFile(username);
                 main.frame.dispose();
                 System.exit(0);
@@ -149,10 +150,8 @@ public class UserInterface implements ActionListener
                 if (evt.getClickCount() == 2)
                 {
                     recipient = list.getSelectedValue();
-                    if(pmWindow.frame == null)
+                    //if(!pmWindow.frame.isVisible())
                         privateMessage();
-                    else
-                        pmWindow.frame.setVisible(true);
                 }
             }
         });
@@ -181,6 +180,11 @@ public class UserInterface implements ActionListener
         main.chatBox.append(line + "\n");
     }
 
+    public void loginPopUp(String user)
+    {
+        JOptionPane.showMessageDialog(main.frame, user + " just logged in!", "New user", JOptionPane.INFORMATION_MESSAGE);
+    }
+
     public void addUser(String user)
     {
         EventQueue.invokeLater(new Runnable() {
@@ -188,8 +192,6 @@ public class UserInterface implements ActionListener
                 if(!main.listModel.contains(user))
                 {
                     main.listModel.addElement(user);
-                    if(!user.equals(username))
-                        JOptionPane.showMessageDialog(main.frame, user + " just logged in!", "New user", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         });
@@ -215,7 +217,7 @@ public class UserInterface implements ActionListener
         int index = line.indexOf(':');
         if(recipient == null)
             recipient = line.substring(0, index);
-        if(!pmWindow.frame.isVisible())
+        //if(!pmWindow.frame.isVisible())
             privateMessage();
         //else
             //pmWindow.frame.setVisible(true);
@@ -345,6 +347,7 @@ public class UserInterface implements ActionListener
                 intro.frame.dispose();
                 list.readMessagesFromFile(username);
                 mainChat();
+                Client.fromUI("5" + username);
             }
             else
                 JOptionPane.showMessageDialog(log.frame, "Login Failed. Please try again.", "Login", JOptionPane.INFORMATION_MESSAGE);

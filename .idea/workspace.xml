@@ -2,8 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c2e949ce-b7ef-4bf4-a46e-e81503906268" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TermProject/src/UserInterfaceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test/Test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TermProject/TermProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/TermProject/TermProject.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TermProject/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/TermProject/src/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TermProject/src/ClientThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/TermProject/src/ClientThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TermProject/src/List.java" beforeDir="false" afterPath="$PROJECT_DIR$/TermProject/src/List.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TermProject/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/TermProject/src/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TermProject/src/ServerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/TermProject/src/ServerThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TermProject/src/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/TermProject/src/UserInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin.txt" beforeDir="false" afterPath="$PROJECT_DIR$/admin.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jholm.txt" beforeDir="false" afterPath="$PROJECT_DIR$/jholm.txt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,19 +33,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/UserInfo.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="3" column="3" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TermProject/src/List.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1520">
-              <caret line="96" column="9" selection-start-line="96" selection-start-column="9" selection-end-line="96" selection-end-column="9" />
+            <state relative-caret-position="536">
+              <caret line="130" column="50" selection-start-line="130" selection-start-column="50" selection-end-line="130" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -41,15 +44,21 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TermProject/src/UserInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="234" column="80" lean-forward="true" selection-start-line="234" selection-start-column="80" selection-end-line="234" selection-end-column="80" />
+            <state relative-caret-position="416">
+              <caret line="344" column="46" lean-forward="true" selection-start-line="344" selection-start-column="16" selection-end-line="344" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#12819#13056#0" expanded="true" />
-                <element signature="e#13055#13056#0" expanded="true" />
+                <element signature="e#2276#2511#0" expanded="true" />
+                <element signature="e#2510#2511#0" expanded="true" />
+                <element signature="e#3492#3726#0" expanded="true" />
+                <element signature="e#3725#3726#0" expanded="true" />
+                <element signature="e#4566#4995#0" expanded="true" />
+                <element signature="e#4994#4995#0" expanded="true" />
+                <element signature="e#12964#13201#0" expanded="true" />
+                <element signature="e#13200#13201#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -57,7 +66,11 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/jholm.txt">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="48">
+              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -70,11 +83,11 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TermProject/src/Server.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2400">
-              <caret line="151" column="30" selection-start-line="151" selection-start-column="30" selection-end-line="151" selection-end-column="30" />
+            <state relative-caret-position="448">
+              <caret line="112" column="15" lean-forward="true" selection-start-line="112" selection-start-column="15" selection-end-line="112" selection-end-column="15" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -85,8 +98,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TermProject/src/ServerThread.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+            <state relative-caret-position="304">
+              <caret line="114" column="39" lean-forward="true" selection-start-line="114" selection-start-column="39" selection-end-line="114" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -97,8 +110,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TermProject/src/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="11" column="32" lean-forward="true" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
+            <state relative-caret-position="1165">
+              <caret line="121" column="38" lean-forward="true" selection-start-line="121" selection-start-column="38" selection-end-line="121" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -106,8 +119,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TermProject/src/ClientThread.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="64">
-              <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
+            <state relative-caret-position="440">
+              <caret line="48" column="27" selection-start-line="48" selection-start-column="27" selection-end-line="48" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -121,6 +134,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -144,14 +158,17 @@
         <option value="$PROJECT_DIR$/Quizzes/src/Main.java" />
         <option value="$PROJECT_DIR$/TermProject/src/Node.java" />
         <option value="$PROJECT_DIR$/TermProject/src/Main.java" />
-        <option value="$PROJECT_DIR$/TermProject/src/List.java" />
         <option value="$PROJECT_DIR$/g.txt" />
         <option value="$PROJECT_DIR$/UserInfo.txt" />
-        <option value="$PROJECT_DIR$/TermProject/src/Server.java" />
+        <option value="$PROJECT_DIR$/TermProject/src/UserInterfaceTest.java" />
+        <option value="$PROJECT_DIR$/TermProject/src/List.java" />
+        <option value="$PROJECT_DIR$/jholm.txt" />
+        <option value="$PROJECT_DIR$/admin.txt" />
         <option value="$PROJECT_DIR$/TermProject/src/ClientThread.java" />
-        <option value="$PROJECT_DIR$/TermProject/src/Client.java" />
-        <option value="$PROJECT_DIR$/TermProject/src/ServerThread.java" />
         <option value="$PROJECT_DIR$/TermProject/src/UserInterface.java" />
+        <option value="$PROJECT_DIR$/TermProject/src/ServerThread.java" />
+        <option value="$PROJECT_DIR$/TermProject/src/Client.java" />
+        <option value="$PROJECT_DIR$/TermProject/src/Server.java" />
       </list>
     </option>
   </component>
@@ -169,7 +186,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -186,16 +202,32 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="create.test.in.the.same.root" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="experimental" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="configurationTypes">
@@ -216,6 +248,17 @@
     <option name="contentProportion" value="0.085497834" />
   </component>
   <component name="RunManager" selected="Application.Client">
+    <configuration name="Test" type="AndroidJUnit">
+      <module name="TermProject" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="UserInterfaceTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Client" type="Application" factoryName="Application" singleton="false" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Client" />
       <module name="TermProject" />
@@ -257,6 +300,7 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Android JUnit.Test" />
       <item itemvalue="Application.Client" />
       <item itemvalue="Application.Server" />
       <item itemvalue="Application.Main" />
@@ -354,18 +398,35 @@
     <option name="localTasksCounter" value="11" />
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="Test - 2019.06.04 at 22h 06m 04s.xml">
+      <configuration name="Test" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="Test - 2019.06.04 at 22h 06m 29s.xml">
+      <configuration name="Test" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="Test - 2019.06.04 at 22h 06m 43s.xml">
+      <configuration name="Test" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="Test - 2019.06.04 at 22h 13m 35s.xml">
+      <configuration name="Test" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="Test - 2019.06.04 at 22h 23m 22s.xml">
+      <configuration name="Test" configurationId="AndroidJUnit" />
+    </history-entry>
+  </component>
   <component name="ToolWindowManager">
-    <frame x="-2" y="0" width="1924" height="1051" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49945828" visible="true" weight="0.20437567" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49945828" visible="true" weight="0.20628998" />
       <window_info id="Structure" order="1" sideWeight="0.5005417" side_tool="true" weight="0.26332623" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Run Dashboard" order="0" sideWeight="0.49946696" visible="true" weight="0.22918919" />
+      <window_info active="true" anchor="bottom" id="Run Dashboard" order="0" sideWeight="0.49946696" visible="true" weight="0.22860238" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.32936078" />
       <window_info anchor="bottom" id="Run" order="3" weight="0.2524377" />
@@ -445,7 +506,6 @@
     <SUITE FILE_PATH="coverage/CS300$Client.ic" NAME="Client Coverage Results" MODIFIED="1559686877567" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files (x86)/BlueJ/jdk/src.zip!/java/util/concurrent/locks/AbstractQueuedSynchronizer.java" />
     <entry file="jar://C:/Program Files (x86)/BlueJ/jdk/src.zip!/java/util/concurrent/locks/ReentrantLock.java" />
     <entry file="jar://C:/Program Files (x86)/BlueJ/jdk/jre/lib/rt.jar!/sun/awt/dnd/SunDragSourceContextPeer.class" />
     <entry file="jar://C:/Program Files (x86)/BlueJ/jdk/src.zip!/java/lang/Enum.java" />
@@ -518,45 +578,45 @@
     <entry file="file://$PROJECT_DIR$/bholm.txt" />
     <entry file="file://$PROJECT_DIR$/UserInfo.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="48">
           <caret line="3" column="3" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TermProject/src/UserInterfaceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="15" column="25" lean-forward="true" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TermProject/src/List.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1520">
-          <caret line="96" column="9" selection-start-line="96" selection-start-column="9" selection-end-line="96" selection-end-column="9" />
+        <state relative-caret-position="536">
+          <caret line="130" column="50" selection-start-line="130" selection-start-column="50" selection-end-line="130" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TermProject/src/Server.java">
+    <entry file="file://$PROJECT_DIR$/jholm.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2400">
-          <caret line="151" column="30" selection-start-line="151" selection-start-column="30" selection-end-line="151" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="48">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TermProject/src/ServerThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/admin.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hello.txt">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/TermProject/src/ClientThread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
+        <state relative-caret-position="440">
+          <caret line="48" column="27" selection-start-line="48" selection-start-column="27" selection-end-line="48" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -565,28 +625,45 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TermProject/src/Client.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="11" column="32" lean-forward="true" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
+        <state relative-caret-position="1165">
+          <caret line="121" column="38" lean-forward="true" selection-start-line="121" selection-start-column="38" selection-end-line="121" selection-end-column="38" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hello.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jholm.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/TermProject/src/UserInterface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="234" column="80" lean-forward="true" selection-start-line="234" selection-start-column="80" selection-end-line="234" selection-end-column="80" />
+        <state relative-caret-position="416">
+          <caret line="344" column="46" lean-forward="true" selection-start-line="344" selection-start-column="16" selection-end-line="344" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#12819#13056#0" expanded="true" />
-            <element signature="e#13055#13056#0" expanded="true" />
+            <element signature="e#2276#2511#0" expanded="true" />
+            <element signature="e#2510#2511#0" expanded="true" />
+            <element signature="e#3492#3726#0" expanded="true" />
+            <element signature="e#3725#3726#0" expanded="true" />
+            <element signature="e#4566#4995#0" expanded="true" />
+            <element signature="e#4994#4995#0" expanded="true" />
+            <element signature="e#12964#13201#0" expanded="true" />
+            <element signature="e#13200#13201#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TermProject/src/ServerThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="114" column="39" lean-forward="true" selection-start-line="114" selection-start-column="39" selection-end-line="114" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TermProject/src/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="112" column="15" lean-forward="true" selection-start-line="112" selection-start-column="15" selection-end-line="112" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -643,7 +720,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>Quizzes</last-edited>
+          <last-edited>Test</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

@@ -135,6 +135,12 @@ public class ServerThread extends Thread
                     //input = input.replace('3', '\0');
                     server.receivePMessage(input);
                 }
+                else if(input.contains("5"))
+                {
+                    input = input.substring(1);
+                    //input = input.replace('3', '\0');
+                    server.receiveLogin(input);
+                }
                 //line = in.readUTF();
                 //System.out.println(in.readUTF());
                 //System.out.println("2");
