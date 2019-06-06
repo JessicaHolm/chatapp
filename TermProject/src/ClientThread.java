@@ -3,7 +3,6 @@ import java.io.*;
 
 public class ClientThread extends Thread
 {
-    private Socket socket = null;
     private Client client;
     private DataInputStream in;
     private volatile boolean flag = true;
@@ -11,13 +10,12 @@ public class ClientThread extends Thread
     public ClientThread(Client c, Socket s) throws IOException
     {
         client = c;
-        socket = s;
 
-        in = new DataInputStream(socket.getInputStream());
+        in = new DataInputStream(s.getInputStream());
         start();
     }
 
-    //5
+    @Override
     public void run()
     {
         String input;
@@ -26,7 +24,6 @@ public class ClientThread extends Thread
         {
             try
             {
-                //System.out.println("5");
                 input = in.readUTF();
                 if(input.contains("2"))
                 {
@@ -46,7 +43,12 @@ public class ClientThread extends Thread
                 else if(input.contains("5"))
                 {
                     input = input.substring(1);
-                    client.sendLogin(input);
+                    client.sendLoginPopup(input);
+                }
+                else if(input.contains("6"))
+                {
+                    input = input.substring(1);
+                    client.sendLogoutPopup(input);
                 }
                 else
                     client.sendUser(input);

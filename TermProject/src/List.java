@@ -7,33 +7,11 @@ public class List
     public static ArrayList<ServerThread> online = new ArrayList<>();
     public static ArrayList<String> messages = new ArrayList<>();
 
-    /*
-    public List()
-    {
-        try
-        {
-            FileReader file = new FileReader("UserInfo.txt");
-            BufferedReader in = new BufferedReader(file);
-            String line;
-
-            while ((line = in.readLine()) != null)
-                regs.add(line);
-
-            in.close();
-
-        }
-        catch (IOException i)
-        {
-            i.printStackTrace();
-        }
-    }
-     */
-
     public void readUsersFromFile()
     {
         try
         {
-            FileReader file = new FileReader("UserInfo.txt");
+            FileReader file = new FileReader("ExtraFiles\\UserInfo.txt");
             BufferedReader in = new BufferedReader(file);
             String line;
 
@@ -53,7 +31,7 @@ public class List
     {
         try
         {
-            FileReader file = new FileReader(username + ".txt");
+            FileReader file = new FileReader("ExtraFiles\\" + username + ".txt");
             BufferedReader in = new BufferedReader(file);
             String line;
 
@@ -73,8 +51,8 @@ public class List
     {
         try
         {
-            FileWriter outUser = new FileWriter("UserInfo.txt");
-            FileWriter outMessage = new FileWriter(username + ".txt");
+            FileWriter outUser = new FileWriter("ExtraFiles\\UserInfo.txt");
+            FileWriter outMessage = new FileWriter("ExtraFiles\\" + username + ".txt");
 
             for (String i : regs)
                 outUser.write(i + "\n");
@@ -91,34 +69,39 @@ public class List
         }
     }
 
-    public void register(String username, String password)
+    public boolean register(String username, String password)
     {
+        for (String i : regs)
+        {
+            int index = i.indexOf(':');
+            String user = i.substring(0, index);
+            if(user.equals(username))
+                return false;
+        }
         try
         {
-            FileWriter outMessage = new FileWriter(username + ".txt");
+            FileWriter out = new FileWriter("ExtraFiles\\" + username + ".txt");
             String userInfo = username + ":" + password;
             regs.add(userInfo);
-            outMessage.close();
+            out.close();
         }
         catch (IOException i)
         {
             System.out.println("IO error: " + i.getMessage());
         }
+        return true;
     }
 
-    public int login(String username, String password)
+    public boolean login(String username, String password)
     {
         String userInfo = username + ":" + password;
 
         for (String i : regs)
         {
             if(i.equals(userInfo))
-            {
-                //ServerThread.setUserName(username);
-                return 0;
-            }
+                return true;
         }
-        return -1;
+        return false;
     }
 
     public void record(String message)
