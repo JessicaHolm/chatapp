@@ -1,4 +1,0 @@
-hello: hello
-hello: fjksal
-hello: yo
-hello: retards

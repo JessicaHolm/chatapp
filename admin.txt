@@ -1,5 +1,0 @@
-admin: ok
-admin: fdg
-admin: dfgs
-admin: hfdfg
-admin: fgd
