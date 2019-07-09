@@ -1,5 +1,10 @@
-# CS 300 Code
+# Chat Application
 
 Copyright (c) 2019 Jason Holm
 
-This repo contains code used for projects and quizzes in my CS 300 class at Portland State University.
+This program is a basic chat application written in Java. It consists of a server and multiple clients
+that can connect to it. The program uses a GUI written using the Swing libraries in Java.
+
+## License
+
+This program is licensed under the "MIT License". Please see the file `LICENSE` in the source distribution of this software for license terms.
