@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c2e949ce-b7ef-4bf4-a46e-e81503906268" name="Default Changelist" comment="">
+    <list default="true" id="c2e949ce-b7ef-4bf4-a46e-e81503906268" name="Default Changelist" comment="added license">
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ExtraFiles/admin.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ExtraFiles/admin.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ExtraFiles/jholm.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ExtraFiles/jholm.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ExtraFiles/null.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TermProject/TermProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ChatApp/ChatApp.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TermProject/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChatApp/src/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TermProject/src/ClientThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChatApp/src/ClientThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TermProject/src/List.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChatApp/src/List.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TermProject/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChatApp/src/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TermProject/src/ServerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChatApp/src/ServerThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TermProject/src/UnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChatApp/src/UnitTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TermProject/src/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChatApp/src/UserInterface.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,7 +29,7 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TermProject/src/UnitTest.java">
+        <entry file="file://$PROJECT_DIR$/ChatApp/src/UnitTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="400">
               <caret line="30" column="32" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
@@ -36,7 +41,7 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TermProject/src/List.java">
+        <entry file="file://$PROJECT_DIR$/ChatApp/src/List.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="528">
               <caret line="34" column="57" selection-start-line="34" selection-start-column="57" selection-end-line="34" selection-end-column="57" />
@@ -48,7 +53,7 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TermProject/src/UserInterface.java">
+        <entry file="file://$PROJECT_DIR$/ChatApp/src/UserInterface.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1360">
               <caret line="87" column="55" selection-start-line="87" selection-start-column="55" selection-end-line="87" selection-end-column="55" />
@@ -60,7 +65,7 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TermProject/src/Server.java">
+        <entry file="file://$PROJECT_DIR$/ChatApp/src/Server.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1744">
               <caret line="110" column="25" selection-start-line="110" selection-start-column="25" selection-end-line="110" selection-end-column="25" />
@@ -72,7 +77,7 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TermProject/src/ServerThread.java">
+        <entry file="file://$PROJECT_DIR$/ChatApp/src/ServerThread.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1344">
               <caret line="86" column="28" selection-start-line="86" selection-start-column="28" selection-end-line="86" selection-end-column="28" />
@@ -84,7 +89,7 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TermProject/src/Client.java">
+        <entry file="file://$PROJECT_DIR$/ChatApp/src/Client.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1264">
               <caret line="80" column="38" selection-start-line="80" selection-start-column="38" selection-end-line="80" selection-end-column="38" />
@@ -96,7 +101,7 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TermProject/src/ClientThread.java">
+        <entry file="file://$PROJECT_DIR$/ChatApp/src/ClientThread.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
               <caret line="16" selection-start-line="16" selection-end-line="16" />
@@ -111,8 +116,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="112">
-                <caret line="7" column="10" lean-forward="true" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
+              <first_editor relative-caret-position="80">
+                <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
               </first_editor>
               <second_editor />
             </state>
@@ -169,8 +174,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-19" />
-    <option name="y" value="16" />
+    <option name="x" value="61" />
+    <option name="y" value="-22" />
     <option name="width" value="1293" />
     <option name="height" value="1048" />
   </component>
@@ -189,11 +194,11 @@
           <expand>
             <path>
               <item name="CS300" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TermProject" type="462c0819:PsiDirectoryNode" />
+              <item name="ChatApp" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CS300" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TermProject" type="462c0819:PsiDirectoryNode" />
+              <item name="ChatApp" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -250,7 +255,7 @@
   <component name="RunManager" selected="JUnit.UnitTest">
     <configuration name="Client" type="Application" factoryName="Application" singleton="false" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Client" />
-      <module name="TermProject" />
+      <module name="ChatApp" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -266,7 +271,7 @@
     </configuration>
     <configuration name="Server" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Server" />
-      <module name="TermProject" />
+      <module name="ChatApp" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -282,7 +287,7 @@
       <method v="2" />
     </configuration>
     <configuration name="UnitTest" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
-      <module name="TermProject" />
+      <module name="ChatApp" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="UnitTest" />
       <option name="METHOD_NAME" value="" />
@@ -295,12 +300,59 @@
       </method>
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
-      <module name="TermProject" />
+      <module name="ChatApp" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="UserInterfaceTest" />
       <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
       <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+      <module name="ChatApp" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <module name="ChatApp" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -420,7 +472,14 @@
       <option name="project" value="LOCAL" />
       <updated>1559800724987</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="added license">
+      <created>1562636815314</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1562636815314</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -458,7 +517,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49945828" visible="true" weight="0.21481876" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49945828" visible="true" weight="0.21481876" />
       <window_info id="Structure" order="1" sideWeight="0.5005417" side_tool="true" weight="0.26332623" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -467,7 +526,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Run Dashboard" order="0" sideWeight="0.49946696" weight="0.22860238" />
       <window_info anchor="bottom" id="Message" order="1" />
-      <window_info anchor="bottom" id="Find" order="2" weight="0.32936078" />
+      <window_info anchor="bottom" id="Find" order="2" visible="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Run" order="3" weight="0.2524377" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
@@ -475,7 +534,7 @@
       <window_info anchor="bottom" id="TODO" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32936078" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50053304" side_tool="true" weight="0.32936078" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="10" sideWeight="0.49946696" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49946696" weight="0.32936078" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32936078" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -487,6 +546,16 @@
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Coverage" order="8" side_tool="true" weight="0.32977587" />
     </layout>
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -542,7 +611,8 @@
     <MESSAGE value="fixed various bugs" />
     <MESSAGE value="cleaned up code and added more unit tests" />
     <MESSAGE value="deleted files" />
-    <option name="LAST_COMMIT_MESSAGE" value="deleted files" />
+    <MESSAGE value="added license" />
+    <option name="LAST_COMMIT_MESSAGE" value="added license" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/CS300$Client.ic" NAME="Client Coverage Results" MODIFIED="1559686877567" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
@@ -609,7 +679,7 @@
     <entry file="file://$PROJECT_DIR$/jholm.txt" />
     <entry file="file://$PROJECT_DIR$/g.txt" />
     <entry file="file://$PROJECT_DIR$/TermProject/com/test/UserInterfaceTest.java" />
-    <entry file="file://$PROJECT_DIR$/TermProject/src/UnitTest.java">
+    <entry file="file://$PROJECT_DIR$/ChatApp/src/UnitTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
           <caret line="30" column="32" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
@@ -619,7 +689,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TermProject/src/List.java">
+    <entry file="file://$PROJECT_DIR$/ChatApp/src/List.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="528">
           <caret line="34" column="57" selection-start-line="34" selection-start-column="57" selection-end-line="34" selection-end-column="57" />
@@ -629,7 +699,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TermProject/src/UserInterface.java">
+    <entry file="file://$PROJECT_DIR$/ChatApp/src/UserInterface.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1360">
           <caret line="87" column="55" selection-start-line="87" selection-start-column="55" selection-end-line="87" selection-end-column="55" />
@@ -639,7 +709,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TermProject/src/Server.java">
+    <entry file="file://$PROJECT_DIR$/ChatApp/src/Server.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1744">
           <caret line="110" column="25" selection-start-line="110" selection-start-column="25" selection-end-line="110" selection-end-column="25" />
@@ -649,7 +719,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TermProject/src/ServerThread.java">
+    <entry file="file://$PROJECT_DIR$/ChatApp/src/ServerThread.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1344">
           <caret line="86" column="28" selection-start-line="86" selection-start-column="28" selection-end-line="86" selection-end-column="28" />
@@ -659,7 +729,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TermProject/src/Client.java">
+    <entry file="file://$PROJECT_DIR$/ChatApp/src/Client.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1264">
           <caret line="80" column="38" selection-start-line="80" selection-start-column="38" selection-end-line="80" selection-end-column="38" />
@@ -669,7 +739,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TermProject/src/ClientThread.java">
+    <entry file="file://$PROJECT_DIR$/ChatApp/src/ClientThread.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="16" selection-start-line="16" selection-end-line="16" />
@@ -682,8 +752,8 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="112">
-            <caret line="7" column="10" lean-forward="true" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
+          <first_editor relative-caret-position="80">
+            <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
           </first_editor>
           <second_editor />
         </state>
