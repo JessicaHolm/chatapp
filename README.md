@@ -1,6 +1,6 @@
 # Chat Application
 
-Copyright (c) 2019 Jason Holm
+Copyright (c) 2019 Jessica Holm
 
 This program is a basic chat application written in Java. It consists of a server and multiple clients
 that can connect to it. The program uses a GUI written using the Swing libraries in Java.
